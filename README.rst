@@ -25,7 +25,7 @@ For MPRIS support these dependencies are needed:
     * ``python-gobject``
 On OS X homebrew:
 
-    * ``python-dbus``
-    * ``pygobject``
+    * ``brew install dbus``
+    * ``brew install pygobject3``
 
 Chances are that all these are available by your package manager.
