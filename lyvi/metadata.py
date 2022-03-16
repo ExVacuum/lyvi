@@ -133,10 +133,10 @@ class Metadata:
         <album> -- album of the current song
         """
         data = getattr(self, type)
-        if self.file and data and data != 'Searching...':
+        if file and data and data != 'Searching...':
             for k, v in {
-                '<filename>': os.path.splitext(os.path.basename(self.file))[0],
-                '<songdir>': os.path.dirname(self.file),
+                '<filename>': os.path.splitext(os.path.basename(file))[0],
+                '<songdir>': os.path.dirname(file),
                 '<artist>': self.artist,
                 '<title>': self.title,
                 '<album>': self.album
