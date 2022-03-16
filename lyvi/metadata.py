@@ -10,6 +10,8 @@ import os
 import random
 from threading import Lock
 
+import types
+
 import plyr
 
 import lyvi
@@ -157,6 +159,23 @@ class Metadata:
         type -- type of the metadata
         normalize -- whether the search strings should be normalized by glyr
         """
+
+        file = lyvi.config['save_lyrics']
+        if type == 'lyrics' and file:
+            for k, v in {
+                '<filename>': os.path.splitext(os.path.basename(file))[0],
+                '<songdir>': os.path.dirname(file),
+                '<artist>': self.artist,
+                '<title>': self.title,
+                '<album>': self.album
+            }.items():
+                file = file.replace(k, v)
+            if os.path.exists(file):
+                with open(file, "rb") as f:
+                    dataObj = types.SimpleNamespace()
+                    dataObj.data = f.read()
+                    return [dataObj]
+
         try:
             query = plyr.Query(
                 number=number,
