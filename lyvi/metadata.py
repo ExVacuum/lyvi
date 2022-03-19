@@ -139,9 +139,9 @@ class Metadata:
             for k, v in {
                 '<filename>': os.path.splitext(os.path.basename(file))[0],
                 '<songdir>': os.path.dirname(file),
-                '<artist>': self.artist.replace('/', ''),
-                '<title>': self.title.replace('/', ''),
-                '<album>': self.album.replace('/', '')
+                '<artist>': self.artist.replace('/', '') if self.artist else '',
+                '<title>': self.title.replace('/', '') if self.title else '',
+                '<album>': self.album.replace('/', '') if self.album else ''
             }.items():
                 file = file.replace(k, v)
             if not os.path.exists(os.path.dirname(file)):
@@ -165,9 +165,9 @@ class Metadata:
             for k, v in {
                 '<filename>': os.path.splitext(os.path.basename(file))[0],
                 '<songdir>': os.path.dirname(file),
-                '<artist>': self.artist.replace('/', ''),
-                '<title>': self.title.replace('/', ''),
-                '<album>': self.album.replace('/', '')
+                '<artist>': self.artist.replace('/', '') if self.artist else '',
+                '<title>': self.title.replace('/', '') if self.title else '',
+                '<album>': self.album.replace('/', '') if self.album else ''
             }.items():
                 file = file.replace(k, v)
             if os.path.exists(file):
